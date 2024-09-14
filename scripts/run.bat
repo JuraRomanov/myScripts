@@ -1,3 +1,4 @@
 @echo off
-cd .venv/Scripts && activate  && cd../../
+cd .venv/Scripts && activate  && cd../../ 
+pause
 @echo on

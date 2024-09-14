@@ -5,7 +5,8 @@ from art import tprint
 
 class Settings:
     general = { 
-        "cls_after_use": True , 
+        "cls_after_use": True ,
+	    "off_command" : "pass" ,  
     }
     venv = {
     } 
@@ -16,8 +17,8 @@ class Settings:
     "textAction" : "italic purple",
     "textQuestion" : 'bold orange3'
     }
-    file_names = { 
-        "pip_lib" : "requirements.txt"
+    file_path = { 
+        "pip_lib" : "scripts/requirements.txt"
     }
     def __init__(self) -> None:
         pass
@@ -53,14 +54,14 @@ def action_selection() -> bool:
     [console.print(f'[{item}]',style = setting.st["textAction"] , end = " ") for item in commadList]
 
     action  = input()
+    if action == setting.general["off_command"]:
+        return True
     match action : 
-        case 'pass': 
-            return True 
         case 'установить библиотеки':
-            console.print(f'имя файла (по умолчанию {setting.file_names["pip_lib"]}): ' , style=setting.st["textAction"] , end = " ")
+            console.print(f'путь до файла (по умолчанию {setting.file_path["pip_lib"]}): ' , style=setting.st["textAction"] , end = " ")
             name = input()
             if name == "": 
-                name = setting.file_names["pip_lib"]
+                name = setting.file_path["pip_lib"]
         
             os.system(f'pip install -r {name}')
         case 'обновить библиотеки':
@@ -87,7 +88,8 @@ if __name__ == "__main__":
     while(not(action_selection())): 
        pass 
     if setting.general["cls_after_use"]: 
-        os.system("cmd /k cls")              
+        os.system("cmd /k cls")
+           
                 
             
 
