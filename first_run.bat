@@ -1,0 +1,1 @@
+cd scripts && pip install -r requirements.txt && cd ../ && start.bat

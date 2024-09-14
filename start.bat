@@ -1,0 +1,1 @@
+py scripts/start.py
